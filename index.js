@@ -96,6 +96,14 @@ async function run() {
             res.send(result);
         })
 
+        // Delete order
+        app.delete('/order/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const result = await orderCollection.deleteOne(query);
+            res.send(result);
+        });
+
 
     }
     finally {
@@ -104,13 +112,8 @@ async function run() {
 }
 run().catch(console.dir);
 
-
 app.get('/', (req, res) => {
     res.send('Ebook Server Side');
-});
-
-app.get('hero', (req, res) => {
-    res.send('hero Server Side');
 });
 
 app.listen(port, () => {
