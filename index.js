@@ -109,6 +109,10 @@ app.get('/', (req, res) => {
     res.send('Ebook Server Side');
 });
 
+app.get('hero', (req, res) => {
+    res.send('hero Server Side');
+});
+
 app.listen(port, () => {
     console.log('Listening to port', port);
 })
